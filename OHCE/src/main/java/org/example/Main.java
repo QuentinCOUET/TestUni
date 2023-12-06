@@ -7,31 +7,18 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        String language = "en";
-
+        String lang = "en";
         java.util.GregorianCalendar calendar = new GregorianCalendar();
-        if (calendar.get(Calendar.HOUR_OF_DAY) > 2 && calendar.get(Calendar.HOUR_OF_DAY) < 18) {
-            if (language == "fr") {
-                System.out.println("Bonjour");
-            }
-            if (language == "en") {
-                System.out.println("good morning");
-            }
-        } else {
-            if (language == "fr") {
-                System.out.println("Bonsoir");
-            } else if (language == "en") {
-                System.out.println("good afternoon");
-            }
-        }
+
+        starting(lang, calendar);
 
         Scanner myObj = new Scanner(System.in);  // Create a Scanner object
         String str = myObj.nextLine();  // Read user input
 
         if (pal(str)) {
-            if (language == "fr") {
+            if (lang == "fr") {
                 System.out.println("Bien dit !");
-            } else if (language == "en") {
+            } else if (lang == "en") {
                 System.out.println("well said !");
             }
         } else {
@@ -47,20 +34,7 @@ public class Main {
         }
 
 
-        if (calendar.get(Calendar.HOUR_OF_DAY) > 21 && calendar.get(Calendar.HOUR_OF_DAY) < 4) {
-            if (language == "fr") {
-                System.out.println("bonne nuit");
-            }
-            if (language == "en") {
-                System.out.println("good night");
-            }
-        } else {
-            if (language == "fr") {
-                System.out.println("Au revoir");
-            } else if (language == "en") {
-                System.out.println("good bye");
-            }
-        }
+        ending(lang, calendar);
     }
 
     public static boolean pal(String mot) {
@@ -82,5 +56,49 @@ public class Main {
             i++;
         }
         return egale;
+    }
+
+    public static String starting(String lang, java.util.GregorianCalendar calendar) {
+        if (calendar.get(Calendar.HOUR_OF_DAY) > 2 && calendar.get(Calendar.HOUR_OF_DAY) < 18) {
+            if (lang == "fr") {
+                System.out.println("Bonjour");
+                return "Bonjour";
+            }
+            if (lang == "en") {
+                System.out.println("good morning");
+                return "good morning";
+            }
+        } else {
+            if (lang == "fr") {
+                System.out.println("Bonsoir");
+                return "Bonsoir";
+            } else if (lang == "en") {
+                System.out.println("good afternoon");
+                return "good afternoon";
+            }
+        }
+        return "";
+    }
+
+    public static String ending(String lang, java.util.GregorianCalendar calendar) {
+        if (calendar.get(Calendar.HOUR_OF_DAY) > 4 && calendar.get(Calendar.HOUR_OF_DAY) < 21) {
+            if (lang == "fr") {
+                System.out.println("Au revoir");
+                return "Au revoir";
+            } else if (lang == "en") {
+                System.out.println("good bye");
+                return "good bye";
+            }
+        } else {
+            if (lang == "fr") {
+                System.out.println("bonne nuit");
+                return "bonne nuit";
+            }
+            if (lang == "en") {
+                System.out.println("good night");
+                return "good night";
+            }
+        }
+        return "";
     }
 }
